@@ -25,13 +25,7 @@
 
 package me.lucko.helper.internal;
 
-import me.lucko.helper.Commands;
 import me.lucko.helper.plugin.ExtendedJavaPlugin;
-import me.lucko.helper.utils.Players;
-
-import org.bukkit.plugin.Plugin;
-
-import java.util.Comparator;
 
 /**
  * Standalone plugin which provides the helper library at runtime for other plugins
@@ -45,13 +39,6 @@ public final class StandalonePlugin extends ExtendedJavaPlugin {
 
     @Override
     protected void enable() {
-        // provide an info command
-        if (getConfig().getBoolean("info-command", true)) {
-            Commands.create()
-                    .handler(c -> LoaderUtils.getHelperImplementationPlugins().stream()
-                            .sorted(Comparator.comparing(Plugin::getName))
-                            .forEach(pl -> Players.msg(c.sender(), "&7[&6helper&7] &7Running &6" + pl.getName() + " v" + pl.getDescription().getVersion() + "&7.")))
-                    .register("helper");
-        }
+        // Empty
     }
 }

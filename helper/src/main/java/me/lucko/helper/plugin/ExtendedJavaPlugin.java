@@ -27,23 +27,17 @@ package me.lucko.helper.plugin;
 
 import me.lucko.helper.Schedulers;
 import me.lucko.helper.Services;
-import me.lucko.helper.config.ConfigFactory;
 import me.lucko.helper.internal.LoaderUtils;
-import me.lucko.helper.maven.LibraryLoader;
 import me.lucko.helper.scheduler.HelperExecutors;
 import me.lucko.helper.terminable.composite.CompositeTerminable;
 import me.lucko.helper.terminable.module.TerminableModule;
 import me.lucko.helper.utils.CommandMapUtil;
 
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import ninja.leaping.configurate.ConfigurationNode;
-
-import java.io.File;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -75,8 +69,6 @@ public class ExtendedJavaPlugin extends JavaPlugin implements HelperPlugin {
 
         this.terminableRegistry = CompositeTerminable.create();
 
-        LibraryLoader.loadAll(getClass());
-
         // call subclass
         load();
     }
@@ -90,11 +82,6 @@ public class ExtendedJavaPlugin extends JavaPlugin implements HelperPlugin {
                 .every(30, TimeUnit.SECONDS)
                 .run(this.terminableRegistry::cleanup)
                 .bindWith(this.terminableRegistry);
-
-        // setup services
-        if (this.isLoaderPlugin) {
-            HelperServices.setup(this);
-        }
 
         // call subclass
         enable();
@@ -171,46 +158,6 @@ public class ExtendedJavaPlugin extends JavaPlugin implements HelperPlugin {
         Objects.requireNonNull(name, "name");
         Objects.requireNonNull(pluginClass, "pluginClass");
         return (T) getServer().getPluginManager().getPlugin(name);
-    }
-
-    private File getRelativeFile(@Nonnull String name) {
-        getDataFolder().mkdirs();
-        return new File(getDataFolder(), name);
-    }
-
-    @Nonnull
-    @Override
-    public File getBundledFile(@Nonnull String name) {
-        Objects.requireNonNull(name, "name");
-        File file = getRelativeFile(name);
-        if (!file.exists()) {
-            saveResource(name, false);
-        }
-        return file;
-    }
-
-    @Nonnull
-    @Override
-    public YamlConfiguration loadConfig(@Nonnull String file) {
-        Objects.requireNonNull(file, "file");
-        return YamlConfiguration.loadConfiguration(getBundledFile(file));
-    }
-
-    @Nonnull
-    @Override
-    public ConfigurationNode loadConfigNode(@Nonnull String file) {
-        Objects.requireNonNull(file, "file");
-        return ConfigFactory.yaml().load(getBundledFile(file));
-    }
-
-    @Nonnull
-    @Override
-    public <T> T setupConfig(@Nonnull String file, @Nonnull T configObject) {
-        Objects.requireNonNull(file, "file");
-        Objects.requireNonNull(configObject, "configObject");
-        File f = getRelativeFile(file);
-        ConfigFactory.yaml().load(f, configObject);
-        return configObject;
     }
 
     @Nonnull

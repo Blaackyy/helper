@@ -134,49 +134,6 @@ public interface HelperPlugin extends Plugin, TerminableConsumer {
     <T> T getPlugin(@Nonnull String name, @Nonnull Class<T> pluginClass);
 
     /**
-     * Gets a bundled file from the plugins resource folder.
-     *
-     * <p>If the file is not present, a version of it it copied from the jar.</p>
-     *
-     * @param name the name of the file
-     * @return the file
-     */
-    @Nonnull
-    File getBundledFile(@Nonnull String name);
-
-    /**
-     * Loads a config file from a file name.
-     *
-     * <p>Behaves in the same was as {@link #getBundledFile(String)} when the file is not present.</p>
-     *
-     * @param file the name of the file
-     * @return the config instance
-     */
-    @Nonnull
-    YamlConfiguration loadConfig(@Nonnull String file);
-
-    /**
-     * Loads a config file from a file name.
-     *
-     * <p>Behaves in the same was as {@link #getBundledFile(String)} when the file is not present.</p>
-     *
-     * @param file the name of the file
-     * @return the config instance
-     */
-    @Nonnull
-    ConfigurationNode loadConfigNode(@Nonnull String file);
-
-    /**
-     * Populates a config object.
-     *
-     * @param file the name of the file
-     * @param configObject the config object
-     * @param <T> the config object type
-     */
-    @Nonnull
-    <T> T setupConfig(@Nonnull String file, @Nonnull T configObject);
-
-    /**
      * Gets the plugin's class loader
      *
      * @return the class loader
