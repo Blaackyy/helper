@@ -10,6 +10,8 @@
 /out/
 *.iml
 .idea_modules/
+.gradle
+build
 
 # JIRA plugin
 atlassian-ide-plugin.xml
