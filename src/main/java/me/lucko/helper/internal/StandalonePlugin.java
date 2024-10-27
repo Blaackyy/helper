@@ -27,6 +27,8 @@ package me.lucko.helper.internal;
 
 import me.lucko.helper.plugin.ExtendedJavaPlugin;
 
+import java.util.logging.Level;
+
 /**
  * Standalone plugin which provides the helper library at runtime for other plugins
  * on the server to use.
@@ -40,5 +42,11 @@ public final class StandalonePlugin extends ExtendedJavaPlugin {
     @Override
     protected void enable() {
         // Empty
+        // Just a check for guava, it is required
+        try {
+            Class.forName("com.google.common.primitives.Booleans");
+        } catch (ClassNotFoundException e) {
+            getLogger().log(Level.SEVERE,"Guava is required and it seems your server fork does not include it.", e);
+        }
     }
 }

@@ -23,7 +23,7 @@ repositories {
 dependencies {
     paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0")
-    compileOnly("net.kyori:event-api:3.0.0")
+    implementation("net.kyori:event-api:3.0.0")
 }
 
 tasks {
@@ -34,8 +34,11 @@ tasks {
     shadowJar {
         archiveClassifier.set("")
 
+        relocate("net.kyori.event", "me.lucko.helper.libs.kyori.event")
+
         dependencies {
             exclude(dependency("org.jetbrains.kotlin:kotlin-stdlib:.*"))
+            exclude(dependency("com.google.*:.*:.*")) // server already includes this
         }
     }
 }
