@@ -25,24 +25,6 @@ I'm no longer actively working on further API additions, but the project is stil
 ##### [`helper`](https://github.com/lucko/helper/tree/master/helper): The main helper project
 [![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper/target/helper.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper) [![Javadocs](https://javadoc.io/badge/me.lucko/helper.svg)](https://javadoc.io/doc/me.lucko/helper)
 
-##### [`helper-sql`](https://github.com/lucko/helper/tree/master/helper-sql): Provides SQL datasources using HikariCP.
-[![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper-sql/target/helper-sql.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-sql/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-sql) [![Javadocs](https://javadoc.io/badge/me.lucko/helper-sql.svg)](https://javadoc.io/doc/me.lucko/helper-sql)
-
-##### [`helper-redis`](https://github.com/lucko/helper/tree/master/helper-redis): Provides Redis clients and implements the helper Messaging system using Jedis.
-[![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper-redis/target/helper-redis.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-redis/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-redis) [![Javadocs](https://javadoc.io/badge/me.lucko/helper-redis.svg)](https://javadoc.io/doc/me.lucko/helper-redis)
-
-##### [`helper-mongo`](https://github.com/lucko/helper/tree/master/helper-mongo): Provides MongoDB datasources.
-[![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper-mongo/target/helper-mongo.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-mongo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-mongo) [![Javadocs](https://javadoc.io/badge/me.lucko/helper-mongo.svg)](https://javadoc.io/doc/me.lucko/helper-mongo)
-
-##### [`helper-lilypad`](https://github.com/lucko/helper/tree/master/helper-lilypad): Implements the helper Messaging system using LilyPad.
-[![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper-lilypad/target/helper-lilypad.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-lilypad/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-lilypad) [![Javadocs](https://javadoc.io/badge/me.lucko/helper-lilypad.svg)](https://javadoc.io/doc/me.lucko/helper-lilypad)
-
-##### [`helper-profiles`](https://github.com/lucko/helper/tree/master/helper-profiles): Provides a cached lookup service for player profiles.
-[![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper-profiles/target/helper-profiles.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-profiles/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-profiles) [![Javadocs](https://javadoc.io/badge/me.lucko/helper-profiles.svg)](https://javadoc.io/doc/me.lucko/helper-profiles)
-
-##### [`helper-js`](https://github.com/lucko/helper/tree/master/helper-js): JavaScript plugins using Nashorn.
-[![Artifact](https://img.shields.io/badge/build-artifact-brightgreen.svg)](https://ci.lucko.me/job/helper/lastSuccessfulBuild/artifact/helper-js/target/helper-js.jar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-js/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.lucko/helper-js) [![Javadocs](https://javadoc.io/badge/me.lucko/helper-js.svg)](https://javadoc.io/doc/me.lucko/helper-js)
-
 ## Feature Overview
 
 * [`Events`](https://github.com/lucko/helper/wiki/helper:-Events) - functional event handling and flexible listener registration
@@ -57,4 +39,5 @@ I'm no longer actively working on further API additions, but the project is stil
 1. Use paperweight
 2. Use gradle
 3. Debloat stuff we already can do with paper api
-4. Folia compatible using CJCrafter's Schedulers library.
+4. Folia compatible using [CJCrafter's Schedulers library](https://github.com/CJCrafter/FoliaScheduler).
+5. Do not shade stuff the server already provides
