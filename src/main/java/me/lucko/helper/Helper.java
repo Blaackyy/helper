@@ -25,6 +25,8 @@
 
 package me.lucko.helper;
 
+import com.cjcrafter.foliascheduler.FoliaCompatibility;
+import com.cjcrafter.foliascheduler.ServerImplementation;
 import me.lucko.helper.internal.LoaderUtils;
 import me.lucko.helper.plugin.HelperPlugin;
 import me.lucko.helper.utils.annotation.NonnullByDefault;
@@ -46,6 +48,7 @@ import javax.annotation.Nullable;
  */
 @NonnullByDefault
 public final class Helper {
+    private static ServerImplementation scheduler = new FoliaCompatibility(hostPlugin()).getServerImplementation();
 
     /**
      * Gets the plugin which is "hosting" helper.
@@ -72,6 +75,15 @@ public final class Helper {
         return server().getServicesManager();
     }
 
+    public static ServerImplementation scheduler() {
+        return scheduler;
+    }
+
+    /**
+     * Deprecated, not supported by folia
+     * @return the bukkit scheduler
+     */
+    @Deprecated
     public static BukkitScheduler bukkitScheduler() {
         return server().getScheduler();
     }

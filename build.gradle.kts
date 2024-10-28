@@ -24,6 +24,7 @@ dependencies {
     paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
     compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0")
     implementation("net.kyori:event-api:3.0.0")
+    implementation("com.cjcrafter:foliascheduler:0.6.0")
 }
 
 tasks {
@@ -31,10 +32,22 @@ tasks {
         dependsOn(shadowJar)
     }
 
+    processResources {
+        val props = mapOf("version" to version)
+        inputs.properties(props)
+        filteringCharset = Charsets.UTF_8.toString()
+        filesMatching("plugin.yml") {
+            expand(props)
+        }
+
+        filesMatching("*.yml") {}
+    }
+
     shadowJar {
         archiveClassifier.set("")
 
         relocate("net.kyori.event", "me.lucko.helper.libs.kyori.event")
+        relocate("com.cjcrafter.foliascheduler", "me.lucko.helper.libs.foliascheduler")
 
         dependencies {
             exclude(dependency("org.jetbrains.kotlin:kotlin-stdlib:.*"))

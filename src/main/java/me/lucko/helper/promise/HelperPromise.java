@@ -29,6 +29,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import me.lucko.helper.Helper;
 import me.lucko.helper.interfaces.Delegate;
 import me.lucko.helper.internal.LoaderUtils;
 import me.lucko.helper.internal.exception.HelperExceptions;
@@ -167,7 +168,7 @@ final class HelperPromise<V> implements Promise<V> {
         if (delayTicks <= 0) {
             executeSync(runnable);
         } else {
-            Bukkit.getScheduler().runTaskLater(LoaderUtils.getPlugin(), HelperExceptions.wrapSchedulerTask(runnable), delayTicks);
+            Helper.scheduler().global().runDelayed(HelperExceptions.wrapSchedulerTask(runnable), delayTicks);
         }
     }
 
@@ -175,7 +176,7 @@ final class HelperPromise<V> implements Promise<V> {
         if (delayTicks <= 0) {
             executeAsync(runnable);
         } else {
-            Bukkit.getScheduler().runTaskLaterAsynchronously(LoaderUtils.getPlugin(), HelperExceptions.wrapSchedulerTask(runnable), delayTicks);
+            Helper.scheduler().async().runDelayed(HelperExceptions.wrapSchedulerTask(runnable), delayTicks);
         }
     }
 

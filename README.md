@@ -57,3 +57,4 @@ I'm no longer actively working on further API additions, but the project is stil
 1. Use paperweight
 2. Use gradle
 3. Debloat stuff we already can do with paper api
+4. Folia compatible using CJCrafter's Schedulers library.

@@ -25,6 +25,7 @@
 
 package me.lucko.helper;
 
+import com.cjcrafter.foliascheduler.ServerImplementation;
 import me.lucko.helper.interfaces.Delegate;
 import me.lucko.helper.internal.LoaderUtils;
 import me.lucko.helper.internal.exception.HelperExceptions;
@@ -92,10 +93,20 @@ public final class Schedulers {
     }
 
     /**
+     * Will return the server implementation which holds specific schedulers
+     * @return the server implementation
+     */
+    public static ServerImplementation scheduler() {
+        return Helper.scheduler();
+    }
+
+    /**
+     * Deprecated - not supported by folia
      * Gets Bukkit's scheduler.
      *
      * @return bukkit's scheduler
      */
+    @Deprecated
     public static BukkitScheduler bukkit() {
         return Helper.bukkitScheduler();
     }

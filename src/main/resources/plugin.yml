@@ -1,9 +1,10 @@
 name: helper
 author: Luck
-version: ${project.version}
-description: ${project.description}
+version: "${version}"
+description: "Helper"
 main: me.lucko.helper.internal.StandalonePlugin
 website: https://github.com/lucko/helper
 load: STARTUP
-softdepend: [ProtocolLib, Citizens, ViaVersion]
+softdepend: [ProtocolLib]
+folia-supported: true
 api-version: 1.13
