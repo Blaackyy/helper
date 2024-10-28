@@ -53,8 +53,6 @@ import javax.annotation.Nullable;
  * @param <V> the result type
  */
 final class HelperPromise<V> implements Promise<V> {
-    private static Executor executor = Executors.newCachedThreadPool();
-
     @Nonnull
     static <U> HelperPromise<U> empty() {
         return new HelperPromise<>();
@@ -95,7 +93,7 @@ final class HelperPromise<V> implements Promise<V> {
                 public void onFailure(@Nonnull Throwable t) {
                     promise.completeExceptionally(t);
                 }
-            }, executor); //TODO make it use the bukkit stuff
+            }, HelperExecutors.asyncBukkit());
 
             return promise;
 
