@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.blacky"
-version = "1.0.0"
+version = "5.7"
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
 
 repositories {
